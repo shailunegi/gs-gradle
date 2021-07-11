@@ -5,12 +5,12 @@ node {
     checkout scm
   }
   stage('test') {
-     myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
+     myGradleContainer.inside("-v /var/lib/jenkins/.gradle:/home/gradle/.gradle") {
        sh 'cd complete && gradle test'
      }
   }
   stage('run') {
-     myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
+     myGradleContainer.inside("-v /var/lib/jenkins/.gradle:/home/gradle/.gradle") {
        sh 'cd complete && gradle run'
      }
   }
